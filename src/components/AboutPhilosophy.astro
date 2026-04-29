@@ -1,0 +1,72 @@
+---
+type Principle = {
+  ic: string;
+  title: string;
+  desc: string;
+};
+
+const PRINCIPLES: Principle[] = [
+  {
+    ic: 'heart',
+    title: 'Force-free, every time.',
+    desc: "No prong collars, no e-collars, no leash pops, no fear-based correction. The science doesn't support those tools, and after a decade of training I haven't needed them.",
+  },
+  {
+    ic: 'home',
+    title: 'Trained where you live.',
+    desc: "Your kitchen, your driveway, your real walk. A dog who behaves at the trainer's facility but falls apart at home isn't a trained dog — they're a dog with a great vacation memory.",
+  },
+  {
+    ic: 'users',
+    title: 'Family-included.',
+    desc: "I teach you, your partner, your kids. A dog only listens to the rules everyone enforces — so we get everyone on the same page from session one.",
+  },
+  {
+    ic: 'clipboard-check',
+    title: 'Plans, not gimmicks.',
+    desc: "Every dog leaves with a written plan, homework you can actually do, and a number you can text when you're stuck. That's the part most trainers skip.",
+  },
+];
+---
+
+<section id="philosophy" style="background:var(--cu-bone);position:relative;overflow:hidden;">
+  <div class="paws faint"></div>
+  <div class="container-wide" style="position:relative;z-index:1;">
+    <div style="max-width:760px;margin-bottom:56px;">
+      <div class="eyebrow"><span class="tick"></span>How I work · The philosophy</div>
+      <h2 class="section-title">
+        All praise. <span style="color:var(--cu-gold);">No shame.</span>
+      </h2>
+      <p class="section-lead" style="margin-bottom:18px;">
+        That's the bedrock. I want your dog to do the right thing because
+        they trust you and know exactly what "the right thing" looks like
+        — not because they're worried about what you'll do if they get it wrong.
+      </p>
+      <p class="section-lead">
+        What I actually use: food, play, clear handling, repetition, and a
+        written plan. What I don't use: anything aversive, anything fear-based,
+        anything sold as a "shortcut." Real change usually takes four to eight
+        weeks of consistent practice — anyone selling you a one-week miracle
+        is selling you something else.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:20px;max-width:1100px;">
+      {PRINCIPLES.map((p) => (
+        <div style="background:#fff;border:1px solid var(--border);border-radius:24px;padding:30px 28px;box-shadow:var(--shadow-sm);display:flex;gap:18px;align-items:flex-start;">
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(255,199,0,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide={p.ic} style="width:22px;height:22px;color:var(--cu-gold);"></i>
+          </div>
+          <div>
+            <h3 style="margin:0 0 8px;font:900 18px var(--font-display);color:var(--cu-navy);letter-spacing:-0.01em;text-transform:uppercase;">
+              {p.title}
+            </h3>
+            <p style="margin:0;font:500 15px var(--font-sans);color:var(--fg2);line-height:1.6;">
+              {p.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

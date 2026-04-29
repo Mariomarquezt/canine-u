@@ -1,0 +1,53 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import AboutHero from '../components/AboutHero.astro';
+import AboutStory from '../components/AboutStory.astro';
+import AboutPhilosophy from '../components/AboutPhilosophy.astro';
+import AboutCredentials from '../components/AboutCredentials.astro';
+import AboutTeam from '../components/AboutTeam.astro';
+import AboutCTA from '../components/AboutCTA.astro';
+import Footer from '../components/Footer.astro';
+import StickyCall from '../components/StickyCall.astro';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <script is:inline>
+    (function () {
+      const html = document.documentElement;
+      html.classList.add('cu-first-load');
+      const remove = () => html.classList.remove('cu-first-load');
+      setTimeout(remove, 1500);
+      document.addEventListener('astro:before-preparation', remove, { once: true });
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Canine University, Sunrise FL</title>
+  <link rel="icon" href="/assets/Canine University Logo GHL.png" />
+  <meta name="description" content="Meet Brianna Alamo — owner and lead trainer of Canine University. Force-free dog training in Sunrise, FL with 10+ years of experience." />
+  <ClientRouter />
+</head>
+<body>
+  <Nav />
+  <AboutHero />
+  <AboutStory />
+  <AboutPhilosophy />
+  <AboutCredentials />
+  <AboutTeam />
+  <AboutCTA />
+  <Footer />
+  <StickyCall />
+
+  <!-- Lucide icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js" is:inline></script>
+  <script is:inline>
+    const renderIcons = () => { if (window.lucide) window.lucide.createIcons(); };
+    renderIcons();
+    document.addEventListener('astro:page-load', renderIcons);
+  </script>
+</body>
+</html>

@@ -1,11 +1,13 @@
 ---
+// Each entry is [href, label]. Section anchors prefix with `/#` so they
+// work from any page; standalone pages use clean URLs like `/about`.
 const items: Array<[string, string]> = [
-  ['programs', 'Programs'],
-  ['about', 'About'],
-  ['transformations', 'Transformations'],
-  ['reviews', 'Reviews'],
-  ['field-notes', 'Field Notes'],
-  ['faq', 'FAQ'],
+  ['/#programs', 'Programs'],
+  ['/about', 'About'],
+  ['/#transformations', 'Transformations'],
+  ['/#reviews', 'Reviews'],
+  ['/#field-notes', 'Field Notes'],
+  ['/#faq', 'FAQ'],
 ];
 ---
 
@@ -16,7 +18,7 @@ const items: Array<[string, string]> = [
     </a>
 
     <div class="cu-nav-pills">
-      {items.map(([id, label]) => <a href={`/#${id}`}>{label}</a>)}
+      {items.map(([href, label]) => <a href={href}>{label}</a>)}
     </div>
 
     <div class="cu-nav-right">
@@ -49,7 +51,7 @@ const items: Array<[string, string]> = [
     </div>
 
     <nav class="cu-mobile-links">
-      {items.map(([id, label]) => <a href={`/#${id}`} data-close-menu>{label}</a>)}
+      {items.map(([href, label]) => <a href={href} data-close-menu>{label}</a>)}
       <a href="/contact" data-close-menu>Contact</a>
     </nav>
 
