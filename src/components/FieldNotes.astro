@@ -1,0 +1,90 @@
+---
+const NOTES = [
+  {
+    img: 'private-lessons.png',
+    cat: 'Puppy Basics',
+    date: 'Apr 22, 2026',
+    read: '4 min read',
+    title: 'The first 14 days with a new puppy (a calmer plan)',
+    desc: "Skip the firehose of advice. Here's the only routine I give my new-puppy clients in their first two weeks.",
+  },
+  {
+    img: 'behavior-mod.png',
+    cat: 'Behavior',
+    date: 'Apr 14, 2026',
+    read: '6 min read',
+    title: "Why your dog 'knows what they did wrong' (they don't)",
+    desc: "The guilty look isn't guilt — it's appeasement. Here's what to do with a dog who's actually struggling.",
+  },
+  {
+    img: 'board-train.png',
+    cat: 'Coaching',
+    date: 'Apr 1, 2026',
+    read: '5 min read',
+    title: "The leash isn't a steering wheel. Stop pulling back.",
+    desc: "If you fight the leash, you teach your dog to fight it too. The fix takes about three walks.",
+  },
+];
+
+const featured = NOTES[0]!;
+const rest = NOTES.slice(1);
+---
+
+<section id="field-notes" style="background:var(--cu-cream);position:relative;">
+  <div class="container-wide">
+    <div style="display:grid;grid-template-columns:1fr auto;align-items:end;margin-bottom:48px;gap:24px;">
+      <div>
+        <div class="eyebrow"><span class="tick"></span>Field Notes · The blog</div>
+        <h2 class="section-title">Training tips, straight from my notebook.</h2>
+      </div>
+      <a href="#" class="ul-link">
+        All field notes <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+      </a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px;">
+      <article class="hover-lift" style="background:#fff;border-radius:28px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-md);display:flex;flex-direction:column;">
+        <div style="position:relative;aspect-ratio:4/3;overflow:hidden;">
+          <img src={`/assets/${featured.img}`} alt={featured.title} style="width:100%;height:100%;object-fit:cover;" />
+          <div style="position:absolute;top:18px;left:18px;background:var(--cu-gold);color:var(--cu-navy);font:900 11px var(--font-sans);letter-spacing:0.16em;text-transform:uppercase;padding:6px 12px;border-radius:9999px;">Featured</div>
+        </div>
+        <div style="padding:30px 28px;flex:1;display:flex;flex-direction:column;">
+          <div style="font:800 12px var(--font-sans);color:var(--cu-gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">
+            {featured.cat} · {featured.read}
+          </div>
+          <h3 style="margin:0 0 14px;font:900 30px var(--font-display);color:var(--cu-navy);letter-spacing:-0.01em;text-transform:uppercase;line-height:1.05;">
+            {featured.title}
+          </h3>
+          <p style="margin:0 0 22px;color:var(--fg2);font:500 16px var(--font-sans);line-height:1.6;flex:1;">{featured.desc}</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font:500 13px var(--font-sans);color:var(--fg3);">{featured.date}</span>
+            <a href="#" class="ul-link">Read field note <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
+          </div>
+        </div>
+      </article>
+
+      {rest.map((n) => (
+        <article class="hover-lift" style="background:#fff;border-radius:28px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;">
+          <div style="position:relative;aspect-ratio:4/3;overflow:hidden;">
+            <img src={`/assets/${n.img}`} alt={n.title} style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div style="padding:24px 24px 26px;flex:1;display:flex;flex-direction:column;">
+            <div style="font:800 11px var(--font-sans);color:var(--cu-gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;">
+              {n.cat} · {n.read}
+            </div>
+            <h3 style="margin:0 0 12px;font:800 22px var(--font-display);color:var(--cu-navy);letter-spacing:-0.01em;text-transform:uppercase;line-height:1.1;">
+              {n.title}
+            </h3>
+            <p style="margin:0 0 18px;color:var(--fg2);font:500 14px var(--font-sans);line-height:1.55;flex:1;">{n.desc}</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;">
+              <span style="font:500 12px var(--font-sans);color:var(--fg3);">{n.date}</span>
+              <a href="#" style="font:700 12px var(--font-sans);color:var(--cu-navy);letter-spacing:0.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;">
+                Read <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

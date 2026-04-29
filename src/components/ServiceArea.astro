@@ -1,0 +1,108 @@
+---
+const PRIMARY_CITIES = [
+  'Sunrise',
+  'Plantation',
+  'Davie',
+  'Weston',
+  'Fort Lauderdale',
+  'Tamarac',
+  'Coral Springs',
+  'Cooper City',
+];
+
+const EXTENDED_CITIES = [
+  'Pembroke Pines',
+  'Pompano Beach',
+  'Lauderhill',
+  'Margate',
+  'Lauderdale Lakes',
+  'Oakland Park',
+  'North Lauderdale',
+];
+---
+
+<section style="background:var(--cu-bone);position:relative;overflow:hidden;">
+  <div class="paws faint"></div>
+  <div class="container-wide" style="position:relative;z-index:1;">
+    <div style="display:grid;grid-template-columns:0.95fr 1.05fr;gap:64px;align-items:center;">
+      <div>
+        <div class="eyebrow"><span class="tick"></span>Where I work · Broward County</div>
+        <h2 class="section-title">Home base in <span style="color:var(--cu-gold);">Sunrise.</span></h2>
+        <p class="section-lead" style="margin-bottom:28px;">
+          Most of my private lessons happen in homes across Broward County. Board &amp;
+          Train and Concierge Boarding clients come to my house in Sunrise — that's
+          where your dog lives, learns, and graduates.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:42px;height:42px;border-radius:12px;background:rgba(255,199,0,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i data-lucide="map-pin" style="width:20px;height:20px;color:var(--cu-gold);"></i>
+            </div>
+            <div>
+              <div style="font:800 14px var(--font-sans);color:var(--cu-navy);margin-bottom:4px;">No travel fee</div>
+              <div style="font:500 14px var(--font-sans);color:var(--fg2);line-height:1.55;">
+                Inside the primary radius (Sunrise &amp; the seven cities to the right).
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:42px;height:42px;border-radius:12px;background:rgba(255,199,0,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i data-lucide="navigation" style="width:20px;height:20px;color:var(--cu-gold);"></i>
+            </div>
+            <div>
+              <div style="font:800 14px var(--font-sans);color:var(--cu-navy);margin-bottom:4px;">Small travel fee outside</div>
+              <div style="font:500 14px var(--font-sans);color:var(--fg2);line-height:1.55;">
+                Most of Broward County. I'll let you know upfront — usually $20–40
+                depending on distance.
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:42px;height:42px;border-radius:12px;background:rgba(255,199,0,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i data-lucide="home" style="width:20px;height:20px;color:var(--cu-gold);"></i>
+            </div>
+            <div>
+              <div style="font:800 14px var(--font-sans);color:var(--cu-navy);margin-bottom:4px;">Board &amp; Train at my house</div>
+              <div style="font:500 14px var(--font-sans);color:var(--fg2);line-height:1.55;">
+                A real home, not a kennel. I'll send you the address once we book.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div class="card" style="padding:32px 30px;">
+          <div style="font:800 11px var(--font-sans);color:var(--cu-gold);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px;">
+            Primary service area · No travel fee
+          </div>
+          <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            {PRIMARY_CITIES.map((city) => (
+              <li style="display:flex;align-items:center;gap:10px;font:700 16px var(--font-sans);color:var(--cu-navy);">
+                <i data-lucide="check-circle-2" style="width:16px;height:16px;color:var(--cu-gold);flex-shrink:0;"></i>
+                {city}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div style="background:transparent;border:1px dashed var(--border-strong);border-radius:24px;padding:28px 30px;">
+          <div style="font:800 11px var(--font-sans);color:var(--fg3);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:14px;">
+            Extended area · Small travel fee
+          </div>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px;">
+            {EXTENDED_CITIES.map((city) => (
+              <li>
+                <span class="chip">{city}</span>
+              </li>
+            ))}
+          </ul>
+          <div style="margin-top:18px;font:500 13px var(--font-sans);color:var(--fg2);line-height:1.55;">
+            Outside this list? Send me a note — I'll go further for the right fit.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+---
+const POSTS = [
+  { img: 'training-session.jpg', likes: 412, cap: 'Beach recall practice with Bella' },
+  { img: 'private-lessons.png', likes: 287, cap: 'First-day jitters · meet Cooper' },
+  { img: 'agility.png', likes: 521, cap: 'Saturday agility class!' },
+  { img: 'board-train.png', likes: 198, cap: "Pickup day — they don't want to leave" },
+  { img: 'daycare.png', likes: 364, cap: 'Day school nap time' },
+  { img: 'behavior-mod.png', likes: 612, cap: 'Luna walked past 3 dogs today 🎓' },
+];
+---
+
+<section id="instagram" style="background:var(--cu-cream);position:relative;padding:90px 0 110px;">
+  <div class="container-wide">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:40px;">
+      <div>
+        <div class="eyebrow"><span class="tick"></span>Instagram · @canine_university</div>
+        <h2 class="section-title">Daily life at the University.</h2>
+      </div>
+      <a href="https://instagram.com/canine_university" target="_blank" rel="noopener" class="btn btn-ghost">
+        <i data-lucide="instagram" style="width:16px;height:16px;"></i>
+        Follow on Instagram
+      </a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(6, 1fr);gap:16px;">
+      {POSTS.map((p) => (
+        <a href="https://instagram.com/canine_university" target="_blank" rel="noopener" class="ig-tile">
+          <img src={`/assets/${p.img}`} alt={p.cap} />
+          <div class="ig-meta">
+            <span style="display:inline-flex;align-items:center;gap:6px;">
+              <i data-lucide="heart" style="width:14px;height:14px;"></i>
+              {p.likes}
+            </span>
+            <i data-lucide="instagram" style="width:16px;height:16px;"></i>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

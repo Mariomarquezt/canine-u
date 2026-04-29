@@ -1,0 +1,73 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import AvailabilityMarquee from '../components/AvailabilityMarquee.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import Programs from '../components/Programs.astro';
+import About from '../components/About.astro';
+import Reviews from '../components/Reviews.astro';
+import FieldNotes from '../components/FieldNotes.astro';
+import Instagram from '../components/Instagram.astro';
+import Footer from '../components/Footer.astro';
+import StickyCall from '../components/StickyCall.astro';
+import Transformations from '../components/Transformations.tsx';
+import FAQ from '../components/FAQ.tsx';
+import Contact from '../components/Contact.tsx';
+import Newsletter from '../components/Newsletter.tsx';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <script is:inline>
+    // Mark the very first page render so the nav can ease in from above.
+    // Removed after first navigation (or after 1.5s) so view-transition
+    // snapshots aren't affected by an active CSS animation on .cu-nav.
+    (function () {
+      const html = document.documentElement;
+      html.classList.add('cu-first-load');
+      const remove = () => html.classList.remove('cu-first-load');
+      setTimeout(remove, 1500);
+      document.addEventListener('astro:before-preparation', remove, { once: true });
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Canine University — Sunrise, FL</title>
+  <link rel="icon" href="/assets/Canine University Logo GHL.png" />
+  <meta name="description" content="Personal, force-free dog training in Sunrise, FL and across Broward County. Private lessons, board & train, behavior modification, and puppy foundations." />
+  <ViewTransitions />
+</head>
+<body>
+  <Nav />
+  <Hero />
+  <AvailabilityMarquee />
+  <TrustStrip />
+  <Programs />
+  <About />
+  <Transformations client:visible />
+  <Reviews />
+  <FieldNotes />
+  <Instagram />
+  <FAQ client:visible />
+  <Contact client:visible />
+  <Newsletter client:visible />
+  <Footer />
+  <StickyCall />
+
+  <!--
+    Lucide icons for the static .astro components.
+    React islands use lucide-react and render their own SVGs — no global
+    pass needed for them. The static markup is in the initial HTML, so a
+    single createIcons() call at load is enough.
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js" is:inline></script>
+  <script is:inline>
+    const renderIcons = () => { if (window.lucide) window.lucide.createIcons(); };
+    renderIcons();
+    document.addEventListener('astro:page-load', renderIcons);
+  </script>
+</body>
+</html>

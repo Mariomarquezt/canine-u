@@ -1,0 +1,53 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import ContactHero from '../components/ContactHero.astro';
+import Contact from '../components/Contact.tsx';
+import WhatHappensNext from '../components/WhatHappensNext.astro';
+import ServiceArea from '../components/ServiceArea.astro';
+import FAQ from '../components/FAQ.tsx';
+import Newsletter from '../components/Newsletter.tsx';
+import Footer from '../components/Footer.astro';
+import StickyCall from '../components/StickyCall.astro';
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <script is:inline>
+    (function () {
+      const html = document.documentElement;
+      html.classList.add('cu-first-load');
+      const remove = () => html.classList.remove('cu-first-load');
+      setTimeout(remove, 1500);
+      document.addEventListener('astro:before-preparation', remove, { once: true });
+    })();
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Canine University, Sunrise FL</title>
+  <link rel="icon" href="/assets/Canine University Logo GHL.png" />
+  <meta name="description" content="Tell me about your dog. Free 20-minute Meet & Greet, then a custom training plan — covering Sunrise, FL and Broward County." />
+  <ViewTransitions />
+</head>
+<body>
+  <Nav />
+  <ContactHero />
+  <Contact client:visible />
+  <WhatHappensNext />
+  <ServiceArea />
+  <FAQ client:visible />
+  <Newsletter client:visible />
+  <Footer />
+  <StickyCall />
+
+  <!-- Lucide icons (matches index.astro) -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js" is:inline></script>
+  <script is:inline>
+    const renderIcons = () => { if (window.lucide) window.lucide.createIcons(); };
+    renderIcons();
+    document.addEventListener('astro:page-load', renderIcons);
+  </script>
+</body>
+</html>

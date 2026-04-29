@@ -1,0 +1,141 @@
+---
+type Program = {
+  id: string;
+  num: string;
+  title: string;
+  img: string;
+  icon: string;
+  duration: string;
+  price: string;
+  desc: string;
+  bullets: string[];
+};
+
+const PROGRAMS: Program[] = [
+  {
+    id: 'private',
+    num: '01',
+    title: 'Private Lessons',
+    img: 'private-lessons.png',
+    icon: 'graduation-cap',
+    duration: '1 hr · in-home or park',
+    price: 'From $150',
+    desc: "I come to your home and we work on what's actually breaking down — pulling, jumping, recall in your driveway. Real life, real fixes.",
+    bullets: ['Tailored plan after first session', 'Homework you can actually do', 'Family-included training'],
+  },
+  {
+    id: 'board',
+    num: '02',
+    title: 'Board & Train',
+    img: 'board-train.png',
+    icon: 'home',
+    duration: '2 or 3 weeks · live-in',
+    price: 'From $2,400',
+    desc: "Your dog moves in with me. We build foundation skills 24/7 in a real home, then I teach you how to keep it going on day one.",
+    bullets: ['Daily video updates', 'Two transfer-day lessons included', 'Two follow-up sessions'],
+  },
+  {
+    id: 'behavior',
+    num: '03',
+    title: 'Behavior Modification',
+    img: 'behavior-mod.png',
+    icon: 'shield',
+    duration: 'By application · 8–12 wks',
+    price: 'Custom',
+    desc: "Reactivity, fear, resource guarding, dog-dog tension. We slow down, build trust, and rewrite your dog's playbook from the ground up.",
+    bullets: ['Vet/behaviorist coordination', 'Long-term coaching plan', 'No quick-fix tools'],
+  },
+  {
+    id: 'puppy',
+    num: '04',
+    title: 'Puppy Foundations',
+    img: 'daycare.png',
+    icon: 'paw-print',
+    duration: '6 weeks · weekly',
+    price: '$650',
+    desc: "Start your puppy out right. Crate, potty, manners, name response, social skills — the things you'll thank yourself for in a year.",
+    bullets: ['8–20 weeks ideal age', 'Socialization done right', 'Cohort of 4–5 puppies'],
+  },
+  {
+    id: 'daycare',
+    num: '05',
+    title: 'Day School',
+    img: 'agility.png',
+    icon: 'sun',
+    duration: 'Full or half day',
+    price: '$70/day',
+    desc: "Drop your dog off for the day and pick up a tired, mentally exercised, slightly-better-mannered version. Limited spots, real coaching.",
+    bullets: ['Max 6 dogs/day', 'Curriculum, not chaos', 'Pickup report card'],
+  },
+  {
+    id: 'boarding',
+    num: '06',
+    title: 'Concierge Boarding',
+    img: 'training-session.jpg',
+    icon: 'moon',
+    duration: 'Existing students only',
+    price: '$95/night',
+    desc: "Going out of town? Your dog stays in my home (not a kennel) and keeps up the good habits we built together while you're away.",
+    bullets: ['Live-in, not crated', 'Daily walks & training', 'Photo updates morning & night'],
+  },
+];
+---
+
+<section id="programs" style="background:var(--cu-bone);position:relative;overflow:hidden;">
+  <div class="paws faint"></div>
+  <div class="container-wide" style="position:relative;z-index:1;">
+    <div style="display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;margin-bottom:64px;">
+      <div>
+        <div class="eyebrow"><span class="tick"></span>The Class List · 06 Programs</div>
+        <h2 class="section-title" style="max-width:800px;">
+          Pick the right <span style="color:var(--cu-gold);">classroom</span> for your dog.
+        </h2>
+        <p class="section-lead">
+          Every program is taught personally by me, in your home or mine.
+          No franchise rotation, no unfamiliar trainers — just one consistent voice
+          from intake to graduation.
+        </p>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <a href="#contact" class="ul-link">
+          Not sure which? Ask me
+          <i data-lucide="message-circle" style="width:14px;height:14px;"></i>
+        </a>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px;">
+      {PROGRAMS.map((p) => (
+        <article class="hover-lift" style="background:#fff;border-radius:28px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-md);display:flex;flex-direction:column;">
+          <div style="position:relative;aspect-ratio:5/3;overflow:hidden;">
+            <img src={`/assets/${p.img}`} alt={p.title} style="width:100%;height:100%;object-fit:cover;" />
+            <div style="position:absolute;top:16px;left:16px;font:900 13px var(--font-sans);letter-spacing:0.18em;color:#fff;background:rgba(20,32,47,0.7);backdrop-filter:blur(6px);padding:6px 12px;border-radius:9999px;">{p.num}</div>
+            <div style="position:absolute;bottom:14px;left:14px;width:50px;height:50px;border-radius:50%;background:var(--cu-gold);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);">
+              <i data-lucide={p.icon} style="width:24px;height:24px;color:var(--cu-navy);"></i>
+            </div>
+          </div>
+          <div style="padding:28px 26px 24px;display:flex;flex-direction:column;flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;">
+              <h3 style="margin:0;font:900 24px var(--font-display);color:var(--cu-navy);letter-spacing:-0.01em;text-transform:uppercase;">{p.title}</h3>
+              <div style="font:800 13px var(--font-sans);color:var(--cu-gold);white-space:nowrap;">{p.price}</div>
+            </div>
+            <div style="font:500 12px var(--font-sans);color:var(--fg3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">{p.duration}</div>
+            <p style="margin:0 0 18px;color:var(--fg2);font:500 15px var(--font-sans);line-height:1.6;flex:1;">{p.desc}</p>
+            <ul style="list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:8px;">
+              {p.bullets.map((b) => (
+                <li style="display:flex;gap:10px;align-items:flex-start;font:500 14px var(--font-sans);color:var(--cu-navy);">
+                  <i data-lucide="check" style="width:16px;height:16px;color:var(--cu-gold);flex-shrink:0;margin-top:2px;"></i>
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <a href="#contact" class="ul-link" style="align-self:flex-start;">
+              Apply for this program
+              <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

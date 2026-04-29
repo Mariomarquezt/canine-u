@@ -1,0 +1,88 @@
+---
+const REVIEWS = [
+  {
+    name: 'Kristen B.',
+    source: 'Google',
+    handle: '5 yrs ago',
+    rating: 5,
+    text: "I was recommended to Brianna when my dog was a puppy and she's been training with her ever since. I have a high-energy dog and investing in this kind of training has been worth every penny.",
+    program: 'Private Lessons',
+  },
+  {
+    name: 'Harvey S.',
+    source: 'Google',
+    handle: '2 yrs ago',
+    rating: 5,
+    text: "Brianna is the personification of 5 stars. I was really impressed by her ability to diagnose the issues with my poodle and create a plan right away. Saw progress within the first session.",
+    program: 'Behavior Mod',
+  },
+  {
+    name: 'Meredith L.',
+    source: 'Thumbtack',
+    handle: '1 yr ago',
+    rating: 5,
+    text: "I cannot recommend Canine University enough — always on time, incredibly professional, and deeply knowledgeable. The calm, patient approach made every session productive.",
+    program: 'Private Lessons',
+  },
+  {
+    name: 'The Diaz family',
+    source: 'Yelp',
+    handle: '8 mo ago',
+    rating: 5,
+    text: "We sent our lab Biscuit for the 3-week board & train and got back a different dog. The transfer-day session is what really made it stick.",
+    program: 'Board & Train',
+  },
+];
+---
+
+<section id="reviews" style="background:var(--cu-bone);position:relative;overflow:hidden;">
+  <div class="container-wide">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:48px;">
+      <div>
+        <div class="eyebrow"><span class="tick"></span>Word of mouth · 80+ reviews</div>
+        <h2 class="section-title">Don't take my word for it.</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="display:flex;gap:2px;color:var(--cu-gold);font-size:18px;">★★★★★</div>
+          <div>
+            <div style="font:900 22px var(--font-display);color:var(--cu-navy);letter-spacing:-0.01em;line-height:1;">4.9 / 5.0</div>
+            <div style="font:500 12px var(--font-sans);color:var(--fg3);margin-top:3px;">Across Google, Yelp, Thumbtack</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:24px;">
+      {REVIEWS.map((r) => (
+        <article style="background:#fff;border-radius:28px;padding:34px 32px;border:1px solid var(--border);position:relative;box-shadow:var(--shadow-sm);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <div style="width:48px;height:48px;border-radius:50%;background:var(--cu-navy);color:var(--cu-gold);display:flex;align-items:center;justify-content:center;font:900 18px var(--font-display);">
+                {r.name[0]}
+              </div>
+              <div>
+                <div style="font:800 16px var(--font-sans);color:var(--cu-navy);">{r.name}</div>
+                <div style="font:500 12px var(--font-sans);color:var(--fg3);margin-top:2px;">via {r.source} · {r.handle}</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:2px;color:var(--cu-gold);font-size:16px;">{'★'.repeat(r.rating)}</div>
+          </div>
+
+          <p style="margin:0 0 22px;color:var(--cu-navy);font:500 17px var(--font-sans);line-height:1.6;">"{r.text}"</p>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px solid var(--border);">
+            <span class="chip">
+              <i data-lucide="graduation-cap" style="width:14px;height:14px;color:var(--cu-gold);"></i>
+              {r.program}
+            </span>
+            <span style="font:500 12px var(--font-sans);color:var(--fg3);display:inline-flex;align-items:center;gap:6px;">
+              <i data-lucide="check-circle-2" style="width:14px;height:14px;color:var(--success);"></i>
+              Verified client
+            </span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

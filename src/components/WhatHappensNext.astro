@@ -1,0 +1,72 @@
+---
+type Step = {
+  num: string;
+  icon: string;
+  title: string;
+  desc: string;
+  meta: string;
+};
+
+const STEPS: Step[] = [
+  {
+    num: '01',
+    icon: 'send',
+    title: 'You send a note',
+    desc: "Fill out the form, give me a call, or send a text. Tell me about your dog — breed, age, what's going well, what's driving you up the wall.",
+    meta: '60 seconds',
+  },
+  {
+    num: '02',
+    icon: 'message-circle',
+    title: 'We meet (free, 20 min)',
+    desc: "Phone or video. I ask questions, you ask questions, and we figure out together whether I'm the right trainer for you. No pressure to book.",
+    meta: 'Free · phone or video',
+  },
+  {
+    num: '03',
+    icon: 'graduation-cap',
+    title: 'We get to work',
+    desc: "If we're a fit, I write you a custom plan and we schedule your first session. You walk away with homework and a number you can text when you're stuck.",
+    meta: 'Plan + first session',
+  },
+];
+---
+
+<section style="background:var(--cu-cream);position:relative;overflow:hidden;">
+  <div class="container-wide">
+    <div style="max-width:760px;margin-bottom:56px;">
+      <div class="eyebrow"><span class="tick"></span>What happens next · The path</div>
+      <h2 class="section-title">From <span style="color:var(--cu-gold);">first hello</span> to first session.</h2>
+      <p class="section-lead">
+        I keep this simple on purpose. No long sales calls, no pressure to commit before
+        you've talked to me. Here's exactly what to expect after you reach out.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:28px;">
+      {STEPS.map((s) => (
+        <article class="hover-lift" style="background:#fff;border:1px solid var(--border);border-radius:28px;padding:32px 30px 30px;box-shadow:var(--shadow-sm);position:relative;display:flex;flex-direction:column;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;">
+            <div style="width:56px;height:56px;border-radius:18px;background:var(--cu-gold);display:flex;align-items:center;justify-content:center;color:var(--cu-navy);box-shadow:var(--shadow-md);">
+              <i data-lucide={s.icon} style="width:26px;height:26px;"></i>
+            </div>
+            <div style="font:900 32px var(--font-display);color:var(--cu-bone);letter-spacing:-0.02em;line-height:1;">
+              {s.num}
+            </div>
+          </div>
+
+          <h3 style="margin:0 0 12px;font:900 22px var(--font-display);color:var(--cu-navy);letter-spacing:-0.01em;text-transform:uppercase;line-height:1.15;">
+            {s.title}
+          </h3>
+          <p style="margin:0 0 22px;color:var(--fg2);font:500 15px var(--font-sans);line-height:1.6;flex:1;">
+            {s.desc}
+          </p>
+          <div style="display:inline-flex;align-items:center;gap:8px;font:800 11px var(--font-sans);color:var(--cu-gold);letter-spacing:0.16em;text-transform:uppercase;padding-top:18px;border-top:1px solid var(--border);">
+            <i data-lucide="clock" style="width:14px;height:14px;"></i>
+            {s.meta}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

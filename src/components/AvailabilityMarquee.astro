@@ -1,0 +1,23 @@
+---
+const items: Array<[string, string]> = [
+  ['calendar', 'Now Enrolling Spring Board & Train'],
+  ['paw-print', 'Private Lessons Available This Week'],
+  ['sparkles', 'New Puppy Foundations Starting May 6'],
+  ['heart', 'Behavior Mod by Application'],
+  ['map-pin', 'Sunrise · Plantation · Davie · Weston'],
+];
+const tripled = [...items, ...items, ...items];
+---
+
+<section style="padding:20px 0;background:var(--cu-navy);border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;">
+  <div class="marquee">
+    <div class="marquee-track" style="color:#fff;">
+      {tripled.map((it) => (
+        <span class="marquee-item" style="color:#fff;">
+          <span class="marquee-dot"></span>
+          {it[1]}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>

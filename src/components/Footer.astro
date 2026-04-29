@@ -1,0 +1,59 @@
+---
+type Col = { title: string; items: Array<[string, string]> };
+
+const cols: Col[] = [
+  { title: 'Programs', items: [['programs','Private Lessons'], ['programs','Board & Train'], ['programs','Behavior Modification'], ['programs','Puppy Foundations'], ['programs','Day School']] },
+  { title: 'Learn', items: [['about','About Brianna'], ['transformations','Transformations'], ['reviews','Reviews'], ['field-notes','Field Notes'], ['faq','FAQ']] },
+  { title: 'Contact', items: [['contact','Tell Me About Your Dog'], ['contact','Schedule Meet & Greet']] },
+];
+
+const socials = ['instagram', 'facebook', 'youtube'];
+const year = new Date().getFullYear();
+---
+
+<footer style="background:var(--cu-navy-deep);color:#fff;padding:72px 0 32px;position:relative;overflow:hidden;">
+  <div class="container-wide">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px;">
+      <div>
+        <a href="/" class="cu-footer-logo" aria-label="Canine University home">
+          <img src="/assets/Canine-University-Logo-dark-bg.png" alt="Canine University" />
+        </a>
+        <p style="margin:0 0 24px;max-width:380px;color:rgba(255,255,255,0.7);font:500 16px var(--font-sans);line-height:1.65;">
+          Where we domesticate and sophisticate. Personal, force-free dog training in
+          Sunrise, FL and across Broward County.
+        </p>
+        <div style="display:flex;gap:10px;">
+          {socials.map((s) => (
+            <a href="#" aria-label={s} style="width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#fff;">
+              <i data-lucide={s} style="width:18px;height:18px;"></i>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {cols.map((col) => (
+        <div>
+          <h4 style="margin:0 0 22px;font:800 12px var(--font-sans);letter-spacing:0.18em;text-transform:uppercase;color:var(--cu-gold);">{col.title}</h4>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+            {col.items.map(([id, l]) => (
+              <li>
+                <a href={`#${id}`} style="color:rgba(255,255,255,0.75);font:500 15px var(--font-sans);transition:color 180ms;">{l}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="hairline on-dark"></div>
+
+    <div style="padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;color:rgba(255,255,255,0.5);font:500 13px var(--font-sans);">
+      <span>© {year} Canine University LLC · Sunrise, FL</span>
+      <span style="display:flex;gap:24px;">
+        <a href="#" style="color:inherit;">Privacy</a>
+        <a href="#" style="color:inherit;">Terms</a>
+        <a href="#" style="color:inherit;">Accessibility</a>
+      </span>
+    </div>
+  </div>
+</footer>

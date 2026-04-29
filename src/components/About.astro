@@ -1,0 +1,82 @@
+---
+const principles = [
+  { ic: 'heart', title: 'Force-free, always.', desc: 'No prong, e-collar, or fear. Reward-based methods backed by 30+ years of behavior science.' },
+  { ic: 'home', title: 'Trained in your real life.', desc: 'Your kitchen, your driveway, your dog walk. Skills that hold up where you actually live.' },
+  { ic: 'users', title: 'Family-included.', desc: "I teach you, your partner, and your kids — because a dog only listens to the rules everyone enforces." },
+  { ic: 'clipboard-check', title: 'Plans, not gimmicks.', desc: "Every dog leaves with a written plan, homework, and a number you can text when you're stuck." },
+];
+---
+
+<section id="about" style="background:var(--cu-cream);position:relative;overflow:hidden;">
+  <div class="container-wide">
+    <div style="display:grid;grid-template-columns:0.95fr 1.05fr;gap:80px;align-items:center;">
+      <div class="about-collage" style="position:relative;height:680px;">
+        <div class="photo-frame tilt-l about-collage-main" style="position:absolute;top:30px;left:0;width:360px;height:460px;z-index:2;">
+          <img src="/assets/brianna.jpg" alt="Brianna Alamo" />
+        </div>
+        <div class="photo-frame tilt-r about-collage-second" style="position:absolute;bottom:0;right:0;width:320px;height:380px;z-index:3;">
+          <img src="/assets/training-session.jpg" alt="Training in action" />
+        </div>
+        <div class="floaty about-collage-badge" style="position:absolute;top:0;right:50px;z-index:4;width:130px;height:130px;border-radius:50%;background:var(--cu-navy);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:var(--shadow-xl);">
+          <div style="font:900 36px var(--font-display);line-height:1;">10+</div>
+          <div style="font:800 10px var(--font-sans);letter-spacing:0.16em;text-transform:uppercase;margin-top:4px;">Years Exp</div>
+        </div>
+        <div class="about-collage-quote" style="position:absolute;bottom:80px;left:30px;z-index:5;background:#fff;padding:14px 18px;border-radius:18px;box-shadow:var(--shadow-lg);border:1px solid var(--border);display:flex;align-items:center;gap:12px;max-width:240px;">
+          <div style="width:42px;height:42px;border-radius:50%;background:rgba(255,199,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="quote" style="width:20px;height:20px;color:var(--cu-gold);"></i>
+          </div>
+          <div style="font:600 13px var(--font-sans);color:var(--cu-navy);line-height:1.4;font-style:italic;">
+            "I'd rather train you well than impress you fast."
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow"><span class="tick"></span>The Founder · Hi, I'm Brianna</div>
+        <h2 class="section-title" style="max-width:600px;">
+          I started Canine University because dog owners deserve a real coach.
+        </h2>
+        <div style="font:500 17px var(--font-sans);color:var(--fg2);line-height:1.7;max-width:560px;margin-bottom:28px;">
+          <p style="margin:0 0 18px;">
+            I grew up in South Florida training dogs that nobody else wanted. After a decade
+            running boards-and-trains for other companies, I opened Canine University so
+            I could do this work my way — small, personal, and built around the human at
+            the other end of the leash.
+          </p>
+          <p style="margin:0;">
+            I'm certified through the IAABC, AKC-evaluator credentialed, and I work alongside
+            my junior trainer Jayden out of our home base in Sunrise, Florida. Most of what
+            I do isn't dog training. It's family training. Your dog already knows what they want —
+            I just help you two agree on the rules.
+          </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px;">
+          {principles.map((p) => (
+            <div style="background:#fff;border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:var(--shadow-sm);display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,199,0,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i data-lucide={p.ic} style="width:18px;height:18px;color:var(--cu-gold);"></i>
+              </div>
+              <div>
+                <div style="font:800 14px var(--font-sans);color:var(--cu-navy);margin-bottom:4px;">{p.title}</div>
+                <div style="font:500 13px var(--font-sans);color:var(--fg2);line-height:1.5;">{p.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <a href="#contact" class="btn btn-navy btn-lg">
+            Schedule a Meet & Greet
+            <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+          </a>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style='font:700 28px "Brush Script MT", cursive;color:var(--cu-navy);font-style:italic;transform:rotate(-4deg);'>
+              — Brianna
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

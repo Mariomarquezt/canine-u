@@ -1,0 +1,105 @@
+---
+const headline = {
+  kicker: 'Sunrise, Florida · Est. 2014',
+  main: ['Dog training', 'that fits', 'real life'],
+  accent: 'real life',
+};
+
+const stats: Array<[string, string]> = [
+  ['10+', 'Years coaching'],
+  ['500+', 'Dogs graduated'],
+  ['4.9★', 'Across 80+ reviews'],
+];
+---
+
+<section id="top" style="position:relative;padding-top:150px;padding-bottom:120px;background:var(--cu-cream);overflow:hidden;">
+  <div class="paws faint"></div>
+
+  <div style="position:absolute;top:110px;right:-40px;width:260px;height:260px;background:radial-gradient(circle, rgba(255,199,0,0.18), transparent 65%);border-radius:50%;filter:blur(20px);pointer-events:none;"></div>
+
+  <div class="container-wide" style="position:relative;z-index:2;display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:center;">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:10px;font:700 12px var(--font-sans);letter-spacing:0.2em;color:var(--cu-navy);text-transform:uppercase;margin-bottom:28px;">
+        <span style="width:28px;height:1.5px;background:var(--cu-gold);"></span>
+        {headline.kicker}
+      </div>
+
+      <h1 class="display-title" style="margin-bottom:32px;">
+        {headline.main.map((line) => {
+          if (line.includes(headline.accent)) {
+            const [pre, post] = line.split(headline.accent);
+            return (
+              <div style="display:block;">
+                {pre}
+                <span class="scribble"><span style="position:relative;z-index:1;">{headline.accent}</span></span>
+                {post}
+              </div>
+            );
+          }
+          return <div style="display:block;">{line}</div>;
+        })}
+      </h1>
+
+      <p style="font-size:19px;line-height:1.6;color:var(--fg2);font-weight:500;max-width:500px;margin:0 0 36px;">
+        I'm Brianna. For ten years I've helped families in South Florida turn
+        anxious puppies, reactive rescues, and stubborn teenagers into dogs
+        you actually want to live with.
+      </p>
+
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+        <a href="#contact" class="btn btn-navy btn-lg">
+          Tell Me About Your Dog
+          <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+        </a>
+        <a href="#programs" class="btn btn-ghost btn-lg">Browse Programs</a>
+      </div>
+
+      <div style="margin-top:56px;display:grid;grid-template-columns:repeat(3, 1fr);gap:0;max-width:540px;">
+        {stats.map(([num, label], i) => (
+          <div style={`padding-left:${i ? '24px' : '0'};border-left:${i ? '1px solid var(--border-strong)' : 'none'};`}>
+            <div style="font:900 36px var(--font-display);color:var(--cu-navy);letter-spacing:-0.02em;line-height:1;">{num}</div>
+            <div style="font:500 13px var(--font-sans);color:var(--fg2);margin-top:6px;">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="hero-collage" style="position:relative;height:620px;">
+      <div class="hero-collage-blob" style="position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);width:92%;height:85%;background:rgba(255,199,0,0.22);border-radius:50%;filter:blur(70px);z-index:0;"></div>
+
+      <div class="photo-frame tilt-r hero-collage-main" style="position:absolute;top:0;right:30px;width:440px;height:540px;z-index:2;">
+        <img src="/assets/hero-trainer.png" alt="Brianna training" />
+      </div>
+
+      <div class="photo-frame tilt-l hero-collage-second" style="position:absolute;bottom:20px;left:0;width:240px;height:280px;z-index:3;">
+        <img src="/assets/training-session.jpg" alt="Happy dog" />
+      </div>
+
+      <div class="floaty hero-collage-badge" style="position:absolute;top:30px;left:0;z-index:4;background:var(--cu-navy);color:#fff;border-radius:20px;padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-xl);">
+        <span style="width:10px;height:10px;border-radius:50%;background:#62D58A;box-shadow:0 0 0 4px rgba(98,213,138,0.25);"></span>
+        <div>
+          <div style="font:800 12px var(--font-sans);letter-spacing:0.16em;text-transform:uppercase;color:var(--cu-gold);">Now Enrolling</div>
+          <div style="font:700 14px var(--font-sans);margin-top:2px;">Spring Board & Train</div>
+        </div>
+      </div>
+
+      <div class="hero-collage-stamp" style="position:absolute;bottom:-10px;right:-10px;z-index:5;width:130px;height:130px;border-radius:50%;background:var(--cu-gold);color:var(--cu-navy);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;box-shadow:var(--shadow-xl);transform:rotate(-8deg);">
+        <i data-lucide="graduation-cap" style="width:30px;height:30px;"></i>
+        <div style="font:900 11px var(--font-sans);letter-spacing:0.14em;text-transform:uppercase;margin-top:4px;">
+          IAABC<br/>Certified
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-wide" style="margin-top:72px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+    <div style="display:flex;align-items:center;gap:14px;font:500 14px var(--font-sans);color:var(--fg2);">
+      <i data-lucide="map-pin" style="width:18px;height:18px;color:var(--cu-gold);"></i>
+      Serving Sunrise, Plantation, Davie, Weston & all of Broward County
+    </div>
+    <a href="#programs" class="ul-link">
+      Scroll to programs
+      <i data-lucide="arrow-down" style="width:14px;height:14px;"></i>
+    </a>
+  </div>
+</section>

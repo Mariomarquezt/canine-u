@@ -1,0 +1,128 @@
+---
+const items: Array<[string, string]> = [
+  ['programs', 'Programs'],
+  ['about', 'About'],
+  ['transformations', 'Transformations'],
+  ['reviews', 'Reviews'],
+  ['field-notes', 'Field Notes'],
+  ['faq', 'FAQ'],
+];
+---
+
+<nav class="cu-nav" id="cu-nav" transition:name="cu-nav">
+  <div class="container-wide cu-nav-inner">
+    <a href="/" class="cu-nav-logo" data-close-menu>
+      <img src="/assets/Canine University Logo GHL.png" alt="Canine University" />
+    </a>
+
+    <div class="cu-nav-pills">
+      {items.map(([id, label]) => <a href={`/#${id}`}>{label}</a>)}
+    </div>
+
+    <div class="cu-nav-right">
+      <a href="tel:9542688899" class="cu-nav-tel">
+        <i data-lucide="phone" style="width:16px;height:16px;color:var(--cu-gold);"></i>
+        954-268-8899
+      </a>
+      <a href="/contact" class="btn btn-gold cu-nav-cta">
+        Tell Me About Your Dog
+        <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+      </a>
+    </div>
+
+    <button class="cu-nav-burger" id="cu-nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="cu-mobile-menu">
+      <i data-lucide="menu" style="width:24px;height:24px;"></i>
+    </button>
+  </div>
+</nav>
+
+<div class="cu-mobile-menu" id="cu-mobile-menu" aria-hidden="true">
+  <div class="cu-mobile-backdrop" data-close-menu></div>
+  <aside class="cu-mobile-panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="cu-mobile-head">
+      <a href="/" data-close-menu>
+        <img src="/assets/Canine University Logo GHL.png" alt="Canine University" />
+      </a>
+      <button class="cu-mobile-close" data-close-menu aria-label="Close menu">
+        <i data-lucide="x" style="width:22px;height:22px;"></i>
+      </button>
+    </div>
+
+    <nav class="cu-mobile-links">
+      {items.map(([id, label]) => <a href={`/#${id}`} data-close-menu>{label}</a>)}
+      <a href="/contact" data-close-menu>Contact</a>
+    </nav>
+
+    <div class="cu-mobile-foot">
+      <a href="tel:9542688899" class="cu-mobile-tel">
+        <i data-lucide="phone" style="width:18px;height:18px;color:var(--cu-gold);"></i>
+        954-268-8899
+      </a>
+      <a href="/contact" class="btn btn-gold btn-lg" data-close-menu>
+        Tell Me About Your Dog
+        <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+      </a>
+    </div>
+  </aside>
+</div>
+
+<script>
+  // Idempotent setup — runs on first load and again after every Astro
+  // view-transition navigation (via astro:page-load). Listeners attached
+  // to window/document persist across navigations, so we deduplicate by
+  // stashing handlers on globals and removing the previous one first.
+  type WithCuNav = typeof window & {
+    __cuNavScroll?: () => void;
+    __cuNavKeydown?: (e: KeyboardEvent) => void;
+  };
+
+  function setupNav() {
+    const w = window as WithCuNav;
+    const nav = document.getElementById('cu-nav');
+    const menu = document.getElementById('cu-mobile-menu');
+    const burger = document.getElementById('cu-nav-burger');
+
+    // Scroll-state class on nav
+    if (w.__cuNavScroll) {
+      window.removeEventListener('scroll', w.__cuNavScroll);
+    }
+    if (nav) {
+      const onScroll = () => {
+        nav.classList.toggle('is-scrolled', window.scrollY > 40);
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      w.__cuNavScroll = onScroll;
+    }
+
+    // Mobile menu open/close
+    if (menu && burger) {
+      const setOpen = (open: boolean) => {
+        menu.classList.toggle('is-open', open);
+        menu.setAttribute('aria-hidden', String(!open));
+        burger.setAttribute('aria-expanded', String(open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      };
+
+      // Reset closed state on each setup (in case nav happened with menu open)
+      setOpen(false);
+
+      burger.addEventListener('click', () => setOpen(true));
+      document.querySelectorAll('[data-close-menu]').forEach((el) => {
+        el.addEventListener('click', () => setOpen(false));
+      });
+
+      if (w.__cuNavKeydown) {
+        document.removeEventListener('keydown', w.__cuNavKeydown);
+      }
+      const onKeydown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setOpen(false);
+      };
+      document.addEventListener('keydown', onKeydown);
+      w.__cuNavKeydown = onKeydown;
+    }
+  }
+
+  setupNav();
+  document.addEventListener('astro:page-load', setupNav);
+</script>
