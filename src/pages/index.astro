@@ -59,9 +59,10 @@ import Newsletter from '../components/Newsletter.tsx';
 
   <!--
     Lucide icons for the static .astro components.
-    React islands use lucide-react and render their own SVGs — no global
-    pass needed for them. The static markup is in the initial HTML, so a
-    single createIcons() call at load is enough.
+    React islands ship their own inline SVGs (see components/icons.tsx),
+    so this CDN pass is just for the data-lucide markers in .astro
+    files. A single createIcons() at load handles the initial markup;
+    astro:page-load re-runs it after view-transition navigations.
   -->
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js" is:inline></script>
   <script is:inline>

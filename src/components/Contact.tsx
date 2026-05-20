@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { Phone, Mail, MapPin, Clock, ShieldCheck, Check, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ShieldCheck, Check, ArrowRight } from './icons';
 
 const programs = ['Private Lessons', 'Board & Train', 'Behavior Mod', 'Puppy Foundations', 'Day School', 'Not sure yet'];
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { Plus } from './icons';
 
 const FAQS = [
   { q: "Do you use e-collars or prong collars?", a: "No. I work force-free, with food, play, and clear handling. The science doesn't support aversive tools — and after ten years I haven't needed them." },

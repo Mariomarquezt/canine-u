@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight } from './icons';
 
 export default function Newsletter() {
   const [done, setDone] = useState(false);
